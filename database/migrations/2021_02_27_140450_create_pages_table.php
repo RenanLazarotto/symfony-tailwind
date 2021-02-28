@@ -15,7 +15,7 @@ class CreatePagesTable extends Migration {
             $table->id();
             $table->string('title');
             $table->foreignId('author')->constrained('users');
-            $table->foreignId('category')->constrained('categories', 'id');
+            $table->foreignId('category');
             $table->string('url')->unique();
             $table->text('content');
             $table->timestamps();
