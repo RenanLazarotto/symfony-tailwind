@@ -24,9 +24,9 @@ class DatabaseSeeder extends Seeder {
             'email'        => 'renanlazarotto@gmail.com'
         ]);
         
-        Page::factory()->count(10)->create([
-            'author'   => $user->id,
-            'category' => $category->id
-        ]);
+        Page::factory()->count(10)->create()->each(function ($post) use ($user, $category) {
+            $post->categories()->attach($category);
+            $post->author($user->id);
+        });
     }
 }

@@ -101,6 +101,21 @@
                     </div>
                 </div>
 
+                <ul>
+                @foreach ($users as $user)
+                <li>Usuário: {{ $user->id }}, {{ $user->display_name }}</li>
+                @endforeach
+
+                @foreach ($categories as $category)
+                <li>Categoria: {{ $category->id }}, {{ $category->name }}</li>
+                @endforeach
+
+                @foreach ($pages as $page)
+                @foreach ($page->categories as $category)
+                {{ dump($category) }}
+                @endforeach
+                @endforeach
+            </ul>
                 <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
                     <div class="text-center text-sm text-gray-500 sm:text-left">
                         <div class="flex items-center">

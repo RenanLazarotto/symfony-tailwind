@@ -14,11 +14,13 @@ class CreatePagesTable extends Migration {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->unsignedBigInteger('author');
             $table->foreignId('author')->constrained('users');
             $table->foreignId('category');
             $table->string('url')->unique();
             $table->text('content');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
